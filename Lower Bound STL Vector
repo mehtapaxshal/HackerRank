@@ -1,0 +1,50 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    
+    int n=0,temp=0;
+    vector<int> v;
+    cin>>n;
+    for(int i=0;i<n;i++)
+        {
+        cin>>temp;
+        v.push_back(temp);
+    }
+    int a=0,flag=0;
+    cin>>temp;
+    vector<int>::iterator index,indexupper;
+    for(int i=0;i<temp;i++)
+        {
+        cin>>a;
+        index=lower_bound(v.begin(),v.end(),a);
+        indexupper=upper_bound(v.begin(),v.end(),a);
+       /* for(int m=0;m<v.size();m++)
+            {
+            if(a==v[m])
+                {
+                flag=1;
+                break;
+            }else
+                {
+                flag=0;
+            }
+        }*/
+        //if(flag)
+    if(v[index-v.begin()] == a)
+        {
+            cout<<"Yes"<<" "<<(index-v.begin()+1)<<endl;
+        }else //if(flag==0)
+            {
+            cout<<"No"<<" "<<(indexupper-v.begin()+1)<<endl;
+        }
+    }
+    
+    return 0;
+}
