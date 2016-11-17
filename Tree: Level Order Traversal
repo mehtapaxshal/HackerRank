@@ -1,0 +1,99 @@
+/**** Method 1 *****/
+/*
+struct node
+{
+    int data;
+    node* left;
+    node* right;
+}*/
+
+int treeHeight(node* root)
+    {
+    
+    if(root==NULL)
+        return 0;
+    
+    int lh=treeHeight(root->left);
+    int rh=treeHeight(root->right);
+    
+    if(lh>rh)
+        return (lh+1);
+    else
+        return (rh+1);
+}
+
+void print(node* root,int level)
+    {
+    if(root==NULL)
+       return;
+    if(level==0)
+        cout<<root->data<<" ";
+    if(level>0)
+        {
+        print(root->left,level-1);
+        print(root->right,level-1);
+    }
+    
+
+}
+void LevelOrder(node * root)
+{
+    
+    int height=treeHeight(root);
+    
+    for(int i=0;i<height;i++)
+        {
+        
+        print(root,i);
+    }
+    
+    
+  
+  
+}
+
+/***** Method 2: Using Queue (STL) ******/
+
+/*
+#include<queue>
+
+struct node
+{
+    int data;
+    node* left;
+    node* right;
+}
+
+void LevelOrder(node * root)
+{
+    
+    queue<node*> list;
+    
+    list.push(root);
+    while(list.empty()==false)
+        {
+        
+        node * temp = list.front();
+
+        printf("%d ", temp->data);
+        
+        list.pop();
+        
+        
+        if(temp->left!=NULL)
+        {
+                
+            list.push(temp->left);
+
+        }
+        
+        if(temp->right!=NULL)
+        {
+                
+            list.push(temp->right);
+
+        }
+    }
+  
+} */
+
