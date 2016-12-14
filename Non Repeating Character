@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+int main()
+ {
+	//code
+	int test;
+	cin>>test;
+	string s;
+	char result;
+	bool flag=false;
+	for(int i=0;i<test;i++)
+	{
+	    int len;
+	    cin>>len;
+	    cin>>s;
+	    
+	    for(int j=0;j<len;j++)
+	    {
+	        for(int k=0;k<len;k++)
+	        {
+	            if(j==k)
+	                continue;
+	            result=s[j];
+	            if(s[j]!=s[k])
+	            {
+	                flag = true;
+	            }else
+	            {
+	                flag = false;
+	                break;
+	            }
+	            
+	        }
+            if(flag==true)
+            {
+                cout<<result<<endl;
+                break;
+            }    
+
+	   }
+	    
+	    if(flag==false)
+	        cout<<-1<<endl;
+	}
+	
+	
+	return 0;
+}
