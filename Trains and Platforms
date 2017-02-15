@@ -1,0 +1,45 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+   //     arr[]  = {900,  940, 950,  1100, 1500, 1800}
+  //      dep[]  = {910, 1200, 1120, 1130, 1900, 2000}
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    
+    int train;
+    cin>>train;
+    int arr[train],dep[train];
+    
+    sort(arr,arr+train);
+    sort(dep,dep+train);
+     
+    for(int i=0;i<train;i++)
+        {
+        cin>>arr[i];
+        cin>>dep[i];
+    }
+    int platform=0,max=0,j=0;
+    for(int i=0;i<train;)
+        {
+       if(arr[i]<dep[j])
+            {
+            
+            platform++;
+            i++;
+            if(max<platform)
+                max=platform;
+        }else
+            {
+               platform--;
+                j++;
+        }
+        
+    }
+    
+    cout<<max;
+   return 0;
+}
