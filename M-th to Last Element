@@ -1,0 +1,74 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+struct Node{
+    long data;
+    Node *next;
+};
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    
+    long m,n,cnt=1;
+    vector<long> input;
+    cin>>m;
+    Node *root,*prev,*head;
+    cin>>n;
+        root=new Node;
+        root->data=n;
+        root->next=NULL;
+        prev=root;
+        head=prev;
+    while(cin>>n && n!='\0')
+        {
+        //input.push_back(n);
+        root=new Node;
+        root->data=n;
+        root->next=NULL;
+        prev->next=root;
+        prev=root;
+        cnt++;
+    }
+    if(m==0 || m>cnt)
+        {
+            cout<<"NIL"<<endl;
+            return 0;
+    }
+    if(m==1 && cnt==1)
+        {
+            cout<<root->data;
+            return 0;
+
+    }
+    Node *slow,*fast;
+    slow=head;
+    fast=head;
+    for(long i=0;i<m;i++)
+        {
+        fast=fast->next;
+    }
+    while(fast!=NULL)
+        {
+            slow=slow->next;
+            fast=fast->next;
+    }
+    
+    cout<<slow->data;
+    return 0;
+    /*if(m==0 || m>input.size())
+        {
+            cout<<"NIL"<<endl;
+            return 0;
+    }
+    if(m==1 && input.size()==1)
+        {
+        cout<<input[0];
+        return 0;
+    }
+    cout<<input[n-m];    
+    return 0;*/
+}
